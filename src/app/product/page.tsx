@@ -15,7 +15,7 @@ export default function Product() {
 
   return (
     <div className="w-[100wh] min-h-screen flex flex-col overflow-y-hidden hide-scroll bg-white">
-      <Header />
+      <Header active={"/product"} />
       <span>Product Page</span>
     </div>
   )

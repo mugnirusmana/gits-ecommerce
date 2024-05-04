@@ -9,7 +9,7 @@ export default function Home() {
   return (
       <div className="w-[100wh] min-h-screen h-fit flex flex-col overflow-hidden hide-scroll bg-white">
 
-        <Header />
+        <Header active={"/"} />
 
         <HomeBanner />
 
