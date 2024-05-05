@@ -10,71 +10,78 @@ const initialState = {
 } as any
 
 const slice = createSlice({
-  name: 'chart',
+  name: 'cart',
   initialState: initialState,
   reducers: {
-    reducerChartDefault: (state) => {
+    reducerCartDefault: (state) => {
         state.isLoading = false
         state.isSuccess = false
         state.isError = false
     },
-    reducerClearChart: (state) => {
+    reducerClearCart: (state) => {
       state.isLoading = false
       state.isSuccess = false
       state.isError = false
       state.errorMessage = ''
       state.data = []
     },
-    reducerChartGet: (state) => {
+    reducerCartGet: (state) => {
       state.isLoading = true
       state.isSuccess = false
       state.isError = false
     },
-    reducerChartSuccess: (state) => {
+    reducerCartSuccess: (state) => {
       state.isLoading = false
       state.isSuccess = true
       state.isError = false
     },
-    reducerChartFailed: (state, payload: any) => {
+    reducerCartFailed: (state, payload: any) => {
       state.isLoading = false
       state.isSuccess = false
       state.isError = true
       state.errorMessage = payload.payload
     },
-    reducerAddToChart: (state, payload: any) => {
+    reducerAddToCart: (state, payload: any) => {
       state.data = state.data.concat(payload.payload)
     }
   }
 })
 
 export const {
-  reducerChartDefault,
-  reducerChartGet,
-  reducerChartSuccess,
-  reducerChartFailed,
-  reducerAddToChart
+  reducerCartDefault,
+  reducerClearCart,
+  reducerCartGet,
+  reducerCartSuccess,
+  reducerCartFailed,
+  reducerAddToCart
 } = slice.actions
 
-export const setDefaultChart = () => {
+export const setDefaultCart = () => {
   return async (dispatch: Function) => {
-    dispatch(reducerChartDefault());
+    dispatch(reducerCartDefault());
   };
 }
 
-export const getChart = () => {
+export const setClearCart = () => {
   return async (dispatch: Function) => {
-    dispatch(reducerChartGet())
+    dispatch(reducerClearCart());
+  };
+}
+
+export const getCart = () => {
+  return async (dispatch: Function) => {
+    dispatch(reducerCartGet())
     setTimeout(() => {
-      dispatch(reducerChartSuccess())
+      dispatch(reducerCartSuccess())
     }, 500)
   }
 }
 
-export const addToChart = (data: any) => {
+export const addToCart = (data: any) => {
   return async (dispatch: Function) => {
-    dispatch(reducerAddToChart(data))
+    dispatch(reducerAddToCart(data))
     setTimeout(() => {
-      dispatch(reducerChartSuccess())
+      dispatch(reducerCartSuccess())
     }, 500)
   }
 }

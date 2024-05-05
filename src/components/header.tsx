@@ -5,7 +5,7 @@ import { RootType } from "@/reducer/store"
 
 export default function header(props: {active?: string | null}) {
   const router = useRouter()
-  const { ChartSlice }  = useSelector((state: RootType) => state)
+  const { CartSlice }  = useSelector((state: RootType) => state)
 
   const renderClass = (route: string) => {
     if (route !== props.active) return 'cursor-pointer font-normal'
@@ -16,9 +16,9 @@ export default function header(props: {active?: string | null}) {
     if (route !== props.active) router.push(route)
   }
 
-  const countChart = () => {
-    let dataChart = ChartSlice?.data?.length > 0 ? ChartSlice?.data?.length : 0
-    return dataChart > 0 ? `(${dataChart})` : ''
+  const countCart = () => {
+    let dataCart = CartSlice?.data?.length > 0 ? CartSlice?.data?.length : 0
+    return dataCart > 0 ? `(${dataCart})` : ''
   }
 
   return (
@@ -38,9 +38,9 @@ export default function header(props: {active?: string | null}) {
           onClick={() => redirect('/categories')}
         >Categories</span>
         <span
-          className={`${renderClass('/chart')} hover:font-bold`}
-          onClick={() => redirect('/chart')}
-        >Chart {countChart()}</span>
+          className={`${renderClass('/cart')} hover:font-bold`}
+          onClick={() => redirect('/cart')}
+        >Cart {countCart()}</span>
         <span
           className={`${renderClass('/login')} hover:font-bold`}
           onClick={() => redirect('/login')}

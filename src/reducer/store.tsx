@@ -3,7 +3,7 @@ import BannerSlice from "@/reducer/slices/bannerSlice"
 import CategoriesSlice from "@/reducer/slices/categoriesSlice"
 import ProductsSlice from "@/reducer/slices/productsSlice"
 import ProductDetailSlice from "@/reducer/slices/productDetailSlice"
-import ChartSlice from "@/reducer/slices/chartSlice"
+import CartSlice from "@/reducer/slices/cartSlice"
 
 export function makeStore() {
   return configureStore({
@@ -12,7 +12,7 @@ export function makeStore() {
       CategoriesSlice: CategoriesSlice,
       ProductsSlice: ProductsSlice,
       ProductDetailSlice: ProductDetailSlice,
-      ChartSlice: ChartSlice
+      CartSlice: CartSlice
     }
   })
 }

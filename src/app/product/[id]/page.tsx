@@ -8,7 +8,7 @@ import Image from "next/image"
 import { useSelector, useDispatch } from "react-redux"
 import { AppDispatch, RootType } from "@/reducer/store"
 import { getProductDetail, setDefaultProductDetail } from "@/reducer/slices/productDetailSlice"
-import { addToChart, setDefaultChart } from "@/reducer/slices/chartSlice"
+import { addToCart, setDefaultCart } from "@/reducer/slices/cartSlice"
 
 interface popupType {
   isShow: boolean,
@@ -50,7 +50,7 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
   const [activeImage, setActiveImage] = useState<string>('')
   const { id }: {id?: string | null} = params
   const router = useRouter()
-  const { ProductDetailSlice, ChartSlice }  = useSelector((state: RootType) => state)
+  const { ProductDetailSlice, CartSlice }  = useSelector((state: RootType) => state)
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
@@ -89,18 +89,21 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
       isSuccess,
       isError,
       errorMessage
-    } = ChartSlice
+    } = CartSlice
 
     if (isError) {
       setPopUp({
         isShow: true,
         message: errorMessage
       })
-      dispatch(setDefaultChart())
+      dispatch(setDefaultCart())
     }
 
-    if (isSuccess) router.push('/chart')
-  }, [ChartSlice])
+    if (isSuccess) {
+      dispatch(setDefaultCart())
+      router.push('/cart')
+    }
+  }, [CartSlice])
 
   const renderPopUp = () => {
     if (popup?.isShow) {
@@ -212,15 +215,15 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
           <div
             className='border border-blue-500 bg-blue-400 rounded px-2 py-1 flex items-center justify-center text-nowrap text-sm text-white cursor-pointer'
             onClick={() => {
-              const itemChart = {
+              const itemCart = {
                 ...ProductDetailSlice?.data,
                 size: selectSize,
                 color: selectColor,
                 specification: selectSpec
               }
-              dispatch(addToChart(itemChart))
+              dispatch(addToCart(itemCart))
             }}
-          >Add to Chart</div>
+          >Add to Cart</div>
 
           <div className='flex flex-row gap-5'>
             <div className='flex flex-row gap-3 w-full'>
