@@ -72,7 +72,7 @@ export default function homeLatestProducts() {
             return (
               <div
                 key={key}
-                className="w-[200px] min-w-[200px] max-w-[200px] h-fit bg-red flex flex-col rounded border border-slate-200 p-2 bg-slate-100 cursor-pointer"
+                className="w-[200px] min-w-[200px] max-w-[200px] h-fit bg-red flex flex-col rounded border border-slate-200 p-2 bg-slate-100 hover:bg-slate-400 cursor-pointer"
                 onClick={() => router.push(`/product/${item.id}`)}
               >
                 <Image

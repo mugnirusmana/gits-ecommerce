@@ -1,8 +1,11 @@
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+
+import { useSelector } from "react-redux"
+import { RootType } from "@/reducer/store"
 
 export default function header(props: {active?: string | null}) {
   const router = useRouter()
+  const { ChartSlice }  = useSelector((state: RootType) => state)
 
   const renderClass = (route: string) => {
     if (route !== props.active) return 'cursor-pointer font-normal'
@@ -11,6 +14,11 @@ export default function header(props: {active?: string | null}) {
 
   const redirect = (route: string) => {
     if (route !== props.active) router.push(route)
+  }
+
+  const countChart = () => {
+    let dataChart = ChartSlice?.data?.length > 0 ? ChartSlice?.data?.length : 0
+    return dataChart > 0 ? `(${dataChart})` : ''
   }
 
   return (
@@ -29,6 +37,10 @@ export default function header(props: {active?: string | null}) {
           className={`${renderClass('/categories')} hover:font-bold`}
           onClick={() => redirect('/categories')}
         >Categories</span>
+        <span
+          className={`${renderClass('/chart')} hover:font-bold`}
+          onClick={() => redirect('/chart')}
+        >Chart {countChart()}</span>
         <span
           className={`${renderClass('/login')} hover:font-bold`}
           onClick={() => redirect('/login')}

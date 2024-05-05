@@ -151,7 +151,7 @@ export default function Product() {
           return (
             <div
               key={index}
-              className="w-full min-w-full max-w-full h-fit bg-red flex flex-col rounded border border-slate-200 p-2 bg-slate-100 cursor-pointer"
+              className="w-full min-w-full max-w-full h-fit flex flex-col rounded border border-slate-200 p-2 bg-slate-100 hover:bg-slate-400 cursor-pointer"
               onClick={() => router.push(`/product/${item?.id}`)}
             >
               <Image
@@ -231,7 +231,7 @@ export default function Product() {
   }
 
   return (
-    <div className="w-[100wh] min-h-screen h-screen flex flex-col overflow-y-scroll overflow-x-hidden bg-white">
+    <div className="w-[100wh] min-h-screen h-screen flex flex-col overflow-y-auto overflow-x-hidden bg-white">
       <Header active={"/product"} />
       
       <div className="w-full h-full flex flex-col gap-4">
