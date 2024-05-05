@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@/components/header'
-import { setClearCart } from '@/reducer/slices/cartSlice'
+import { setClearCart, removeCart } from '@/reducer/slices/cartSlice'
 import { AppDispatch, RootType } from '@/reducer/store'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -164,7 +164,10 @@ export default function Cart() {
               <span>Price: ${item?.price}</span>
               <span className='font-bold'>Total: ${calculateTotal(item)}</span>
             </div>
-            <span className='text-blue-500 underline cursor-pointer text-xs'>Remove</span>
+            <span
+              className='text-blue-500 underline cursor-pointer text-xs'
+              onClick={() => dispatch(removeCart(item, CartSlice?.data))}
+            >Remove</span>
           </div>
         </div>
       )

@@ -43,6 +43,9 @@ const slice = createSlice({
     },
     reducerAddToCart: (state, payload: any) => {
       state.data = state.data.concat(payload.payload)
+    },
+    reducerRemoveCart: (state, payload: any) => {
+      state.data = payload.payload
     }
   }
 })
@@ -53,7 +56,8 @@ export const {
   reducerCartGet,
   reducerCartSuccess,
   reducerCartFailed,
-  reducerAddToCart
+  reducerAddToCart,
+  reducerRemoveCart
 } = slice.actions
 
 export const setDefaultCart = () => {
@@ -83,6 +87,13 @@ export const addToCart = (data: any) => {
     setTimeout(() => {
       dispatch(reducerCartSuccess())
     }, 500)
+  }
+}
+
+export const removeCart = (item: any, data: any) => {
+  return async (dispatch: Function) => {
+    let newData = data.filter((itemData: any) => item?.id === itemData?.id && item?.color === itemData?.color && item?.size === itemData?.size && item?.specification === itemData?.specification ? false : true)
+    dispatch(reducerRemoveCart(newData))
   }
 }
 
