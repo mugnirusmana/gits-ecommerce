@@ -179,7 +179,7 @@ export default function Cart() {
 
   const renderNullCart = () => {
     return (
-      <div className='text-sm'>No product added yet, <span className='cursor-pointer text-blue-500 underline text-xs' onClick={() => router.push('/product')}>Shopping now</span></div>
+      <div className='text-sm'>No product added yet, <span className='cursor-pointer text-blue-500 underline text-xs' onClick={() => router.push('/product')}>Start Shopping</span></div>
     )
   }
 

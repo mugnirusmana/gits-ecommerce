@@ -1,3 +1,4 @@
+import AuthSlice from "./slices/authSlice"
 import { configureStore } from "@reduxjs/toolkit"
 import BannerSlice from "@/reducer/slices/bannerSlice"
 import CategoriesSlice from "@/reducer/slices/categoriesSlice"
@@ -8,6 +9,7 @@ import CartSlice from "@/reducer/slices/cartSlice"
 export function makeStore() {
   return configureStore({
     reducer: {
+      AuthSlice: AuthSlice,
       BannerSlice: BannerSlice,
       CategoriesSlice: CategoriesSlice,
       ProductsSlice: ProductsSlice,

@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@/components/header'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Image from "next/image"
 
@@ -50,7 +50,8 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
   const [activeImage, setActiveImage] = useState<string>('')
   const { id }: {id?: string | null} = params
   const router = useRouter()
-  const { ProductDetailSlice, CartSlice }  = useSelector((state: RootType) => state)
+  const path = usePathname()
+  const { ProductDetailSlice, CartSlice, AuthSlice }  = useSelector((state: RootType) => state)
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
@@ -110,7 +111,7 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
       return (
         <div className='w-screen h-screen absolute top-0 left-0 flex items-center justify-center backdrop-blur-md'>
           <div className='w-[320px] h-[150px] rounded bg-white border border-slate-300 flex flex-col items-center justify-center p-5 gap-3'>
-            <span className='font-bold'>Title</span>
+            <span className='font-bold'>Product Detail</span>
             <span className='h-full text-sm'>{popup?.message}</span>
             <div
               className='w-full flex flex-row items-center justify-center py-1 px-2 rounded bg-blue-300 text-white text-sm cursor-pointer'
@@ -215,13 +216,18 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
           <div
             className='border border-blue-500 bg-blue-400 rounded px-2 py-1 flex items-center justify-center text-nowrap text-sm text-white cursor-pointer'
             onClick={() => {
-              const itemCart = {
-                ...ProductDetailSlice?.data,
-                size: selectSize,
-                color: selectColor,
-                specification: selectSpec
+              if(!AuthSlice?.data?.id) {
+                localStorage.setItem('nextRoute', path)
+                router.replace('/login')
+              } else {
+                const itemCart = {
+                  ...ProductDetailSlice?.data,
+                  size: selectSize,
+                  color: selectColor,
+                  specification: selectSpec
+                }
+                dispatch(addToCart(itemCart))
               }
-              dispatch(addToCart(itemCart))
             }}
           >Add to Cart</div>
 
