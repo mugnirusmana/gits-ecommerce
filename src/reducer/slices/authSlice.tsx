@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { setClearCart } from "@/reducer/slices/cartSlice";
 
 interface PayloadType {
   type?: string | null
@@ -85,6 +86,7 @@ export const setLogout = () => {
       data: {}
     }
     dispatch(reducerAuthSuccess(payload))
+    dispatch(setClearCart())
   }
 }
 

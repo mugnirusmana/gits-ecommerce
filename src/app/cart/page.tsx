@@ -17,11 +17,16 @@ export default function Cart() {
 
   const router = useRouter()
   const dispatch = useDispatch<AppDispatch>()
-  const { CartSlice }  = useSelector((state: RootType) => state)
+  const { CartSlice, AuthSlice }  = useSelector((state: RootType) => state)
 
   useEffect(() => {
-    setData([])
-    setTimeout(() => {setDataCart()},500)
+    if (AuthSlice?.data?.id) {
+      setData([])
+      setTimeout(() => {setDataCart()},500)
+    } else {
+      localStorage.setItem('nextRoute', '/cart')
+      router.replace('/login')
+    }
   }, [])
 
   useEffect(() => {
