@@ -10,11 +10,7 @@ export default function header(props: {active?: string | null}) {
   }
 
   const redirect = (route: string) => {
-    if (route !== props.active) {
-      router.push(route)
-    } else {
-      alert('can not')
-    }
+    if (route !== props.active) router.push(route)
   }
 
   return (
