@@ -87,35 +87,38 @@ export default function Cart() {
             <div className='w-full h-full flex flex-col'>
               {renderContent()}
             </div>
-            <div className='w-1/3 h-fit flex flex-col text-sm p-5 rounded gap-3 border border-slate-200'>
-              <div className='flex flex-row justify-between font-bold'>
-                <span>Subtotal</span>
-                <span>${calculateSubtotal()}</span>
-              </div>
-              <span className='flex flex-row justify-between text-xs italic'>*Shopping and taxes caculated at checkout</span>
+            {data?.length > 0 ? (
+              <div className='w-1/3 h-fit flex flex-col text-sm p-5 rounded gap-3 border border-slate-200'>
+                <div className='flex flex-row justify-between font-bold'>
+                  <span>Subtotal</span>
+                  <span>${calculateSubtotal()}</span>
+                </div>
+                <span className='flex flex-row justify-between text-xs italic'>*Shopping and taxes caculated at checkout</span>
 
-              <div
-                className={`w-full flex flex-row rounded px-4 py-2 text-sm text-white ${payCart?.isLoading ? 'bg-gray-500 cursor-default' : 'bg-blue-400 cursor-pointer'} text-center items-center justify-center`}
-                onClick={() => {
-                  if (!payCart?.isLoading) {
-                    dispatch(setClearCart())
-                    setPayCart({
-                      isLoading: true,
-                      isSuccess: false,
-                    })
-                    setTimeout(() => {
+                <div
+                  className={`w-full flex flex-row rounded px-4 py-2 text-sm text-white ${payCart?.isLoading ? 'bg-gray-500 cursor-default' : 'bg-blue-400 cursor-pointer'} text-center items-center justify-center`}
+                  onClick={() => {
+                    if (!payCart?.isLoading) {
+                      dispatch(setClearCart())
                       setPayCart({
-                        isLoading: false,
-                        isSuccess: true,
+                        isLoading: true,
+                        isSuccess: false,
                       })
-                    }, 1000)
-                  }
-                }}
-              >{payCart?.isLoading ? 'Loading...' : 'Checkout'}</div>
-            </div>
+                      setTimeout(() => {
+                        setPayCart({
+                          isLoading: false,
+                          isSuccess: true,
+                        })
+                      }, 1000)
+                    }
+                  }}
+                >{payCart?.isLoading ? 'Loading...' : 'Checkout'}</div>
+              </div>
+            ) : null}
           </div>
       </>
     )
+
   }
 
   const renderContent = () => {
