@@ -51,7 +51,7 @@ export default function homeCategories() {
           onClick={() => router.push(`/product?category=${item}`)}
         >
           <Image
-            src="https://cdn.shopify.com/s/files/1/1246/6441/files/Shopify_Retail_BlogHeader_Product_Samples_FA.jpg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLJdSQzX49Y7PQZ0tnviuaARf0hrUhynQagiMbnH1ouQ&s"
             alt={"category"}
             className={"w-[100px] min-w-[100px] min-h-[100px] h-[100px] object-cover rounded-md"}
             width={100}
