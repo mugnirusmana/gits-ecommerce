@@ -88,12 +88,12 @@ export default function Cart() {
         <div className="w-full h-fit">
             <h1 className="w-full text-4xl font-bold">Shopping Cart</h1>
           </div>
-          <div className="w-full h-full flex flex-row gap-10">
+          <div className="w-full h-fit laptop:h-full flex flex-col laptop:flex-row gap-10">
             <div className='w-full h-full flex flex-col'>
               {renderContent()}
             </div>
             {data?.length > 0 ? (
-              <div className='w-1/3 h-fit flex flex-col text-sm p-5 rounded gap-3 border border-slate-200'>
+              <div className='w-full laptop:w-1/3 h-fit flex flex-col text-sm p-5 rounded gap-3 border border-slate-200'>
                 <div className='flex flex-row justify-between font-bold'>
                   <span>Subtotal</span>
                   <span>${calculateSubtotal()}</span>

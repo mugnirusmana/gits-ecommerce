@@ -59,9 +59,9 @@ export default function header(props: {active?: string | null}) {
   }
 
   return (
-    <div className="w-full min-h-[60px] flex flex-row items-center px-10 gap-10 border-b border-b-slate-600">
+    <div className="w-full min-h-[60px] h-fit flex flex-col tablet:flex-row items-center px-10 py-10 tablet:py-0 gap-10 border-b border-b-slate-600">
       <div className="font-bold text-2xl text-nowrap">Gits Commerce</div>
-      <div className="w-full flex flex-row gap-5 justify-end">
+      <div className="w-full flex flex-row gap-5 justify-center tablet:justify-end">
         <span
           className={`${renderClass('/')} hover:font-bold`}
           onClick={() => redirect('/')}

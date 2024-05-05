@@ -45,21 +45,21 @@ export default function homeBanner() {
   const renderData = () => {
     return (
       <>
-        <div className="w-full h-full mr-10 flex flex-col justify-center gap-3">
-          <h1 className="font-bold text-2xl">Welcome to Gits Commerce</h1>
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti eos nihil esse aut, quia dicta non expedita voluptates officiis. Odit, dolor magnam excepturi ipsa cupiditate rerum sapiente assumenda deleniti blanditiis.</span>
+        <div className="w-full h-full mr-10 flex flex-col items-center tablet:items-start justify-center gap-3">
+          <h1 className="font-bold text-2xl text-center tablet:text-left">Welcome to Gits Commerce</h1>
+          <span className="text-center tablet:text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti eos nihil esse aut, quia dicta non expedita voluptates officiis. Odit, dolor magnam excepturi ipsa cupiditate rerum sapiente assumenda deleniti blanditiis.</span>
           <div
             className="w-fit h-fit p-2 rounded bg-blue-300 cursor-pointer"
             onClick={() => router.push('/product')}
           >Start Shopping</div>
         </div>
-        <div className="w-[400px] h-full flex items-center justify-center">
+        <div className="w-[400px] h-full flex items-center justify-center pb-10 tablet:pb-0">
           {BannerSlice?.data?.thumbnail
             ? (<Image
               src={BannerSlice.data.thumbnail}
               alt={"banner"}
-              className={"w-[400px] h-[200px] object-cover rounded-md"}
-              width={200}
+              className={"w-auto tablet:w-[400px] h-[150px] tablet:h-[200px] object-cover rounded-md"}
+              width={100}
               height={100}
               priority
             />)
@@ -71,7 +71,7 @@ export default function homeBanner() {
   }
 
   return (
-    <div className="w-full min-h-[200px] h-fit border-b border-b-slate-600 p-10 flex flex-row items-center">
+    <div className="w-full min-h-[200px] h-fit border-b border-b-slate-600 p-10 flex flex-col-reverse tablet:flex-row items-center">
       {renderContent()}
     </div>
   )

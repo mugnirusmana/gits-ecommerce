@@ -146,8 +146,8 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
 
   const renderData = () => {
     return (
-      <div className='w-full h-full flex flex-row gap-10'>
-        <div className='w-1/2 h-ful flex flex-col gap-5'>
+      <div className='w-full h-full flex flex-col tablet:flex-row gap-10'>
+        <div className='w-full tablet:w-1/2 h-ful flex flex-col gap-5'>
           <div className='w-full h-[400px] flex flex-row'>
             <Image
               src={activeImage}
@@ -162,7 +162,7 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
             {renderOtherImages()}
           </div>
         </div>
-        <div className='w-1/2 h-full flex flex-col gap-10 pb-10'>
+        <div className='w-full tablet:w-1/2 h-full flex flex-col gap-10 pb-10'>
           <span className='font-bold text-xl'>{ProductDetailSlice?.data?.title}</span>
           <span>${ProductDetailSlice?.data?.price}</span>
 
@@ -293,8 +293,8 @@ export default function ProductDetail({ params }: { params: { id?: string } }) {
     <div className="w-[100wh] min-h-screen h-screen flex flex-col overflow-y-auto overflow-x-hidden bg-white relative">
       <Header active={"/product"} />
 
-      <div className='w-full h-full flex flex-col gap-5 p-10'>
-        <div className='w-full h-fit flex flex-row text-sm gap-2'>
+      <div className='w-full h-full flex flex-col gap-5 p-10 mt-10 tablet:mt-0'>
+        <div className='w-full h-fit flex flex-row text-sm justify-center tablet:justify-start gap-2'>
           <span className='cursor-pointer' onClick={() => router.push('/product')}>Product</span>
           <span>/</span>
           <span>Product Detail</span>

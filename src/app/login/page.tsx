@@ -122,8 +122,8 @@ export default function Login() {
   }
 
 	return (
-		<div className="w-screen h-screen bg-[#e5e5e5] flex items-center justify-center py-20 text-sm">
-			<div className="w-1/3 h-fit rounded p-10 border border-[#d7d7d7] flex flex-col gap-5 bg-white">
+		<div className="w-screen h-screen bg-[#e5e5e5] flex items-center justify-center py-20 p-10 tablet:p-5 text-sm">
+			<div className="w-full tablet:w-1/2 laptop:w-1/3 h-fit rounded p-10 border border-[#d7d7d7] flex flex-col gap-5 bg-white">
 				<h1 className="font-bold text-2xl w-full border-b border-b-slate-200 pb-3">Login</h1>
 				<div className="w-full flex flex-col gap-1">
 					<span>Username</span>

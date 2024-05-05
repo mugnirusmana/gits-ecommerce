@@ -146,7 +146,7 @@ export default function Product() {
 
   const renderProduct = () => {
     return (
-      <div className="w-full h-fit grid grid-cols-5 gap-5">
+      <div className="w-full h-fit grid grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-5 gap-5">
         {data?.map((item: any, index: number) => {
           return (
             <div
@@ -234,7 +234,7 @@ export default function Product() {
     <div className="w-[100wh] min-h-screen h-screen flex flex-col overflow-y-auto overflow-x-hidden bg-white">
       <Header active={"/product"} />
       
-      <div className="w-full h-full flex flex-col gap-4">
+      <div className="w-full h-full flex flex-col gap-4 pt-10 tablet:pt-0">
         <div className="w-full flex flex-row border-b border-b-slate-300 p-10">
           <h1 className="w-full text-4xl font-bold">Product List</h1>
           <div
